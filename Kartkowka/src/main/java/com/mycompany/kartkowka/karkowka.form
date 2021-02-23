@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Container class="javax.swing.JMenuBar" name="jMenuBar2">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="jMenu10">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="File"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu11">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edit"/>
+          </Properties>
+        </Menu>
+      </SubComponents>
+    </Container>
+    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="js_jMenuNew">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Plik"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemNew">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nowy"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="js_jSeparator1">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuOpen">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Otw&#xf3;rz..."/>
+              </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="js_jMenuOpenStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="js_jMenuOpenActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="js_jMenuOtworzPoprzedni">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Otw&#xf3;rz poprzedni"/>
+              </Properties>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="Js_MenuOtworzZaPomoca">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Otw&#xf3;rz za pomoc&#x105;"/>
+              </Properties>
+            </Menu>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="js_jSeparator3">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemSave">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zapisz"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemSaveUs">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zapisz Jako..."/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="js_jMenuItemSaveUsActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <Menu class="javax.swing.JMenu" name="js_jMenuSaveCode">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zapisz jako z kodowaniem..."/>
+              </Properties>
+            </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemSaveCopy">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zapisz kopi&#x119; jako..."/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemSaveAll">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zapisz wszystko"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="js_jSeparator4">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemLoad">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Wczytaj ponownie"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="js_jMenuItemLoadActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemLoadAll">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Wczytaj ponownie wszystko"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="js_jMenuItemLoadAllActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemPrint">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Drukuj..."/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemPrintPod">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Podgl&#x105;d wydruku"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="js_jSeparator5">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemExport">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eksportuj jako HTML..."/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="js_jSeparator6">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemChangeName">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Zmie&#x144; nazw&#x119;..."/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemDelete">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Usu&#x144;"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemPorownaj">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Por&#xf3;wnaj"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="js_jSeparator7">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemCopyURL">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Skopiuj &#x15b;cie&#x17c;ke pliku"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemOpenFolder">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Otw&#xf3;rz katalog zawieraj&#x105;cy"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemProperties">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="W&#x142;a&#x15b;ciwo&#x15b;ci"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="js_jSeparator2">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemClose">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zamknij"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemCloseOther">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zamknij inne"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemCloseAll">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zamknij wszystko"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="js_jMenuItemCloseAllActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemCloseDel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zamknij porzucone"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="js_jSeparator8">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="js_jMenuItemFinish">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Zako&#x144;cz"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="js_jMenuEdit">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edycja"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="js_jMenuWidok">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Widok"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="js_jMenuProject">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Projekty"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="js_jMenuZakladki">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Zak&#x142;adki"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="js_jMenuSesje">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sesje"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="js_jMenuNarzedzia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Narz&#x119;dzia"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="js_jMenuUstawienia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ustawienia"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="js_jMenuPomoc">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pomoc"/>
+          </Properties>
+        </Menu>
+      </SubComponents>
+    </Menu>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="600" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="700" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+  </SubComponents>
+</Form>
