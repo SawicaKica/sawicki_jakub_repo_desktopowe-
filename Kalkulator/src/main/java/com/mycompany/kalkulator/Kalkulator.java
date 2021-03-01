@@ -6,6 +6,8 @@
 package com.mycompany.kalkulator;
 
 import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -36,7 +38,12 @@ public class Kalkulator extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton12 = new javax.swing.JButton();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jTextFieldWynik = new javax.swing.JTextField();
         jButtonPierw = new javax.swing.JButton();
@@ -63,13 +70,20 @@ public class Kalkulator extends javax.swing.JFrame {
         jMenPlik = new javax.swing.JMenu();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuTools = new javax.swing.JMenu();
+        jCheckBoxMenuItemDni = new javax.swing.JCheckBoxMenuItem();
 
-        jButton12.setText("jButton1");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar2.add(jMenu2);
+
+        jMenu3.setText("File");
+        jMenuBar3.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        jMenuBar3.add(jMenu4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -390,6 +404,19 @@ public class Kalkulator extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenPlik);
 
+        jMenuTools.setText("Tools");
+
+        jCheckBoxMenuItemDni.setSelected(true);
+        jCheckBoxMenuItemDni.setText("Ile dni?");
+        jCheckBoxMenuItemDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItemDniActionPerformed(evt);
+            }
+        });
+        jMenuTools.add(jCheckBoxMenuItemDni);
+
+        jMenuBar1.add(jMenuTools);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -462,10 +489,6 @@ public class Kalkulator extends javax.swing.JFrame {
         jTextFieldWynik.setText(wprowadzona);
     }//GEN-LAST:event_jButtonFiveActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
-
     private void jButtonNineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNineActionPerformed
         wprowadzona = jTextFieldWynik.getText() + jButtonNine.getText();
         jTextFieldWynik.setText(wprowadzona);
@@ -520,6 +543,14 @@ public class Kalkulator extends javax.swing.JFrame {
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
         Zapis();
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void jCheckBoxMenuItemDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItemDniActionPerformed
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyy");
+        String data = JOptionPane.showInputDialog("Wprowadz date: ");
+        LocalDate Idnow = LocalDate.now();
+        LocalDate Idinput = LocalDate.parse(data, formatter);
+        System.out.print(Idnow + " " + Idinput);
+    }//GEN-LAST:event_jCheckBoxMenuItemDniActionPerformed
 
     /**
      * @param args the command line arguments
@@ -604,7 +635,6 @@ public class Kalkulator extends javax.swing.JFrame {
     }
     File Save = new File("Zapis.txt");
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonDziel;
     private javax.swing.JButton jButtonEight;
@@ -625,11 +655,29 @@ public class Kalkulator extends javax.swing.JFrame {
     private javax.swing.JButton jButtonTwo;
     private javax.swing.JButton jButtonZero;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItemDni;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenPlik;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu jMenuTools;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldWynik;
     // End of variables declaration//GEN-END:variables
+
+    private static class jOptionPane {
+
+        private static void showInputDialog(String wprowadz_date_w_formacie_dd_mm_yy) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public jOptionPane() {
+        }
+    }
 }
