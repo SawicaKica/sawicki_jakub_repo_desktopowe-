@@ -8,6 +8,7 @@ package com.mycompany.kalkulator;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -550,6 +551,7 @@ public class Kalkulator extends javax.swing.JFrame {
         LocalDate Idnow = LocalDate.now();
         LocalDate Idinput = LocalDate.parse(data, formatter);
         System.out.print(Idnow + " " + Idinput);
+        long days = ChronoUnit.DAYS.between(Idinput,Idnow);
     }//GEN-LAST:event_jCheckBoxMenuItemDniActionPerformed
 
     /**
