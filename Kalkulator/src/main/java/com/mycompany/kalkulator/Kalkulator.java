@@ -8,6 +8,7 @@ package com.mycompany.kalkulator;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
@@ -546,13 +547,24 @@ public class Kalkulator extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     private void jCheckBoxMenuItemDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItemDniActionPerformed
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-        String date = JOptionPane.showInputDialog("Wprowadz date w formacie dd mm yyyy np. 01 02 2021");
-        LocalDate LocDateNow = LocalDate.now();
-        LocalDate LocDateInput = LocalDate.parse(date, formatter);
-        long days = ChronoUnit.DAYS.between(LocDateInput, LocDateNow);
-
-        System.out.println(days);
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+    String info = "\n";
+    while(!info.equals("ok")){
+        String data = JOptionPane.showInputDialog("Wprowadz date w formacie dd MM yyyy (np. 01 01 2021)"+""+info);
+        //System.out.println(data);
+        if(data != null && data.length()==10){
+            LocalDate ldNow = LocalDate.now();
+            try{
+                LocalDate ldInput = LocalDate.parse(data, formatter);//Tekst -> LocalDate przez format
+                //System.out.println(ldNow+" "+ldInput);
+                long days = ChronoUnit.DAYS.between(ldInput, ldNow);
+                //System.out.println("Ilość dni między datami: "+days);
+                JOptionPane.showMessageDialog(rootPane, ""+days, "Ilość dni", HEIGHT);
+                info = "ok";
+            }catch(DateTimeParseException ex){
+                info = "Wprowadzono zły format daty";
+                }
+            }
     }//GEN-LAST:event_jCheckBoxMenuItemDniActionPerformed
 
     /**
