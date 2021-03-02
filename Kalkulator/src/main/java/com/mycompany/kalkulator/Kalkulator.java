@@ -387,7 +387,7 @@ public class Kalkulator extends javax.swing.JFrame {
         jMenPlik.setText("Plik");
 
         jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Zapisz (Tylko dla wygladu)");
+        jCheckBoxMenuItem1.setText("Zapisz");
         jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxMenuItem1ActionPerformed(evt);
@@ -546,12 +546,13 @@ public class Kalkulator extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     private void jCheckBoxMenuItemDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItemDniActionPerformed
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyy");
-        String data = JOptionPane.showInputDialog("Wprowadz date: ");
-        LocalDate Idnow = LocalDate.now();
-        LocalDate Idinput = LocalDate.parse(data, formatter);
-        System.out.print(Idnow + " " + Idinput);
-        long days = ChronoUnit.DAYS.between(Idinput,Idnow);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+        String date = JOptionPane.showInputDialog("Wprowadz date w formacie dd mm yyyy np. 01 02 2021");
+        LocalDate LocDateNow = LocalDate.now();
+        LocalDate LocDateInput = LocalDate.parse(date, formatter);
+        long days = ChronoUnit.DAYS.between(LocDateInput, LocDateNow);
+
+        System.out.println(days);
     }//GEN-LAST:event_jCheckBoxMenuItemDniActionPerformed
 
     /**
@@ -629,7 +630,7 @@ public class Kalkulator extends javax.swing.JFrame {
         FileWriter fw;
         try {
             fw = new FileWriter(f,true);
-            fw.append(l1 + " + " + l2 + " = " + jTextFieldWynik.getText());
+            fw.append(l1 + " znak " + l2 + " = " + jTextFieldWynik.getText() + "\n");
             fw.close();
         } catch (IOException ex) {
             System.out.println(ex.toString());
