@@ -5,6 +5,10 @@
  */
 package com.mycompany.listazakupow;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+
 /**
  *
  * @author sawic
@@ -16,6 +20,7 @@ public class listazakupow extends javax.swing.JFrame {
      */
     public listazakupow() {
         initComponents();
+        addKeyListenertoCoKupiles();
     }
 
     /**
@@ -43,7 +48,7 @@ public class listazakupow extends javax.swing.JFrame {
         jTextFieldWpisz4 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        jTextPaneDzisiejszeZakupy = new javax.swing.JTextPane();
         jPanelLZ = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -83,7 +88,7 @@ public class listazakupow extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("Zapisz");
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(jTextPaneDzisiejszeZakupy);
 
         javax.swing.GroupLayout jPanelWPLayout = new javax.swing.GroupLayout(jPanelWP);
         jPanelWP.setLayout(jPanelWPLayout);
@@ -253,7 +258,53 @@ public class listazakupow extends javax.swing.JFrame {
             }
         });
     }
+    private void addKeyListenertoCoKupiles(){
+        jTextFieldWpisz.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            //System.out.print("Key Typed"+e.getKeyChar());
+            int kod = e.getExtendedKeyCode();
+            
+            if(e.getKeyChar()==KeyEvent.VK_ENTER){
+                System.out.print("Wprowadzono dane za pomocą ENTER");
+                jTextPaneDzisiejszeZakupy.setText(jTextFieldWpisz.getText());
+            }
+            System.out.print("Znak " + e.getKeyChar());
+            }
 
+            @Override
+            public void keyPressed(KeyEvent e) {
+            //System.out.print("Key Pressed"+e.getKeyChar()); 
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            
+            }
+        });
+    }
+    
+    private void addKeyToListenerToWartosc(){
+    jTextFieldWpisz.addKeyListener(new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+            char ch = e.getKeyChar();
+            if(ch == '0' || ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '7' || ch == '8' || ch == '9'){
+                System.out.print("NACISNIETO LICZBE"+ch);
+            }
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+    });   
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -277,7 +328,7 @@ public class listazakupow extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldWpisz2;
     private javax.swing.JTextField jTextFieldWpisz3;
     private javax.swing.JTextField jTextFieldWpisz4;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane jTextPaneDzisiejszeZakupy;
     // End of variables declaration//GEN-END:variables
 }
