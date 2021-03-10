@@ -41,7 +41,7 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
         jLabelWpisz1 = new javax.swing.JLabel();
         jTextFieldWpisz1 = new javax.swing.JTextField();
         jLabelWpisz2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox = new javax.swing.JComboBox<>();
         jLabelWpisz3 = new javax.swing.JLabel();
         jTextFieldWpisz2 = new javax.swing.JTextField();
         jLabelWpisz4 = new javax.swing.JLabel();
@@ -73,7 +73,7 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
         jLabelWpisz2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelWpisz2.setText("Data zakupu:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabelWpisz3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelWpisz3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -95,6 +95,11 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("Zapisz");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(jTextPaneDzisiejszeZakupy);
 
@@ -114,7 +119,7 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
                                 .addGroup(jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanelWPLayout.createSequentialGroup()
                                         .addGap(75, 75, 75)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanelWPLayout.createSequentialGroup()
                                         .addContainerGap()
                                         .addComponent(jLabelWpisz3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -159,7 +164,7 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelWpisz1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelWpisz2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -236,6 +241,21 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldWpisz3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        jTextPaneDzisiejszeZakupy.setText(jTextFieldWpisz.getText()+";"
+            +jTextFieldWpisz1.getText()+";"
+            +jComboBox.getSelectedItem()+";"
+            +jTextFieldWpisz3.getText()+";"
+            +jTextFieldWpisz2.getText()+";"
+            +jTextFieldWpisz4.getText()+"\n");
+        jTextFieldWpisz.setText("");
+        jTextFieldWpisz1.setText("");
+        jTextFieldWpisz3.setText("");
+        jTextFieldWpisz2.setText("");
+        jTextFieldWpisz4.setText("");
+        jComboBox.setSelectedItem("item1");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -276,15 +296,13 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
             //System.out.print("Key Typed"+e.getKeyChar());
-            int kod = e.getExtendedKeyCode();
-            
-            if(e.getKeyChar()==KeyEvent.VK_ENTER){
-                System.out.print("Wprowadzono dane za pomocą ENTER");
-                jTextPaneDzisiejszeZakupy.setText(jTextFieldWpisz.getText());
+               char ch = e.getKeyChar();
+               if(ch >= 65 && ch <= 90 || ch >= 97 && ch <= 122 || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_SPACE){
+                jTextFieldWpisz.setEditable(true);
+               }else {
+                jTextFieldWpisz.setEditable(false);
+               }
             }
-            System.out.print("Znak " + e.getKeyChar());
-            }
-
             @Override
             public void keyPressed(KeyEvent e) {
             //System.out.print("Key Pressed"+e.getKeyChar()); 
@@ -302,7 +320,7 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
         @Override
         public void keyTyped(KeyEvent e) {
             char ch = e.getKeyChar();
-            if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE){
+            if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_SPACE){
                 jTextFieldWpisz1.setEditable(true);
                 System.out.print("NACISNIETO LICZBE"+ch);
             }else{
@@ -327,7 +345,7 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
         @Override
         public void keyTyped(KeyEvent e) {
             char ch = e.getKeyChar();
-            if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_SPACE){
+            if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_SPACE || ch == KeyEvent.VK_BACK_SPACE){
                 jTextFieldWpisz3.setEditable(true);
                 System.out.print("NACISNIETO LICZBE"+ch);
             }else{
@@ -348,7 +366,7 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelWpisz;
     private javax.swing.JLabel jLabelWpisz1;
