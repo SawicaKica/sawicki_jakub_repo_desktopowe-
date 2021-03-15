@@ -340,18 +340,23 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
     });   
     }
     
-    private void addKeyToListenerToData(){
-    jTextFieldWpisz3.addKeyListener(new KeyListener() {
-        @Override
-        public void keyTyped(KeyEvent e) {
-            char ch = e.getKeyChar();
-            if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_SPACE || ch == KeyEvent.VK_BACK_SPACE){
-                jTextFieldWpisz3.setEditable(true);
-                System.out.print("NACISNIETO LICZBE"+ch);
-            }else{
-                jTextFieldWpisz3.setEditable(false);
+    private void addKeyListenerData(){
+      jTextFieldWpisz3.addKeyListener(new KeyListener(){
+            @Override
+            public void keyTyped(KeyEvent e) {
+                String temp = jTextFieldWpisz3.getText();
+                char ch = e.getKeyChar();
+                if((ch >= '0' && ch <= '9' || ch==KeyEvent.VK_BACK_SPACE) &&
+                        (temp.length() < 10 || ch==KeyEvent.VK_BACK_SPACE)){
+                    jTextFieldWpisz3.setEditable(true);
+                    if((temp.length() == 4 || temp.length() == 7) && ch != KeyEvent.VK_BACK_SPACE){
+                        jTextFieldWpisz3.setText(temp+"-");
+                    }
+                }else{
+                    jTextFieldWpisz3.setEditable(false);
+                }
             }
-        }
+
 
         @Override
         public void keyPressed(KeyEvent e) {
