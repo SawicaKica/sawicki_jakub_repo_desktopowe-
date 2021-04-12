@@ -7,6 +7,10 @@ package com.mycompany.listazakupow;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.*;
+import java.util.Scanner;
+
+
 
 
 /**
@@ -22,7 +26,10 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
         initComponents();
         addKeyListenertoCoKupiles();
         addKeyToListenerToWartosc();
-        addKeyToListenerToData();
+        addKeyListenerData();
+        addKeyListenerWydatki();
+        addToolTipElements();
+        filljCBProducts();
     }
 
     /**
@@ -35,6 +42,10 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPaneListaZakupow = new javax.swing.JTabbedPane();
+        jPanelLZ = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane2 = new javax.swing.JTextPane();
         jPanelWP = new javax.swing.JPanel();
         jLabelWpisz = new javax.swing.JLabel();
         jTextFieldWpisz = new javax.swing.JTextField();
@@ -43,146 +54,19 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
         jLabelWpisz2 = new javax.swing.JLabel();
         jComboBox = new javax.swing.JComboBox<>();
         jLabelWpisz3 = new javax.swing.JLabel();
-        jTextFieldWpisz2 = new javax.swing.JTextField();
-        jLabelWpisz4 = new javax.swing.JLabel();
         jTextFieldWpisz3 = new javax.swing.JTextField();
+        jLabelWpisz4 = new javax.swing.JLabel();
+        jTextFieldWpisz2 = new javax.swing.JTextField();
         jLabelWpisz5 = new javax.swing.JLabel();
         jTextFieldWpisz4 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPaneDzisiejszeZakupy = new javax.swing.JTextPane();
-        jPanelLZ = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabelWpisz.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelWpisz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelWpisz.setText("Wpisz co kupiłeś:");
-
-        jLabelWpisz1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelWpisz1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelWpisz1.setText("Typ zakupionego towaru:");
-
-        jLabelWpisz2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelWpisz2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelWpisz2.setText("Data zakupu:");
-
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabelWpisz3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelWpisz3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelWpisz3.setText("Podaj wartość:");
-
-        jLabelWpisz4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelWpisz4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelWpisz4.setText("Wydatki z tygodnia:");
-
-        jTextFieldWpisz3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldWpisz3ActionPerformed(evt);
-            }
-        });
-
-        jLabelWpisz5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabelWpisz5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelWpisz5.setText("Wydatki z dzisiaj:");
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setText("Zapisz");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jScrollPane1.setViewportView(jTextPaneDzisiejszeZakupy);
-
-        javax.swing.GroupLayout jPanelWPLayout = new javax.swing.GroupLayout(jPanelWP);
-        jPanelWP.setLayout(jPanelWPLayout);
-        jPanelWPLayout.setHorizontalGroup(
-            jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelWPLayout.createSequentialGroup()
-                .addGroup(jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelWPLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanelWPLayout.createSequentialGroup()
-                        .addGroup(jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelWPLayout.createSequentialGroup()
-                                .addGroup(jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelWPLayout.createSequentialGroup()
-                                        .addGap(75, 75, 75)
-                                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanelWPLayout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabelWpisz3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jLabelWpisz2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanelWPLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelWpisz, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldWpisz1)
-                                    .addGroup(jPanelWPLayout.createSequentialGroup()
-                                        .addComponent(jLabelWpisz1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jTextFieldWpisz2)
-                                    .addComponent(jLabelWpisz4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldWpisz3)
-                                    .addComponent(jLabelWpisz5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldWpisz4)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelWPLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldWpisz, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanelWPLayout.setVerticalGroup(
-            jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelWPLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelWPLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(jPanelWPLayout.createSequentialGroup()
-                        .addComponent(jLabelWpisz, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldWpisz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelWpisz3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldWpisz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelWpisz1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelWpisz2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldWpisz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelWpisz5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldWpisz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelWpisz4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldWpisz4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))))
-        );
-
-        jTabbedPaneListaZakupow.addTab("Wprowadź zakupy", jPanelWP);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -213,6 +97,127 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
 
         jTabbedPaneListaZakupow.addTab("Lista zakupów", jPanelLZ);
 
+        jLabelWpisz.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelWpisz.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelWpisz.setText("Wpisz co kupiłeś:");
+
+        jLabelWpisz1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelWpisz1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelWpisz1.setText("Typ zakupionego towaru:");
+
+        jLabelWpisz2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelWpisz2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelWpisz2.setText("Data zakupu:");
+
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "spożywczy", "elektronika", "meblarski" }));
+
+        jLabelWpisz3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelWpisz3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelWpisz3.setText("Podaj wartość:");
+
+        jLabelWpisz4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelWpisz4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelWpisz4.setText("Wydatki z tygodnia:");
+
+        jTextFieldWpisz2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldWpisz2ActionPerformed(evt);
+            }
+        });
+
+        jLabelWpisz5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelWpisz5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelWpisz5.setText("Wydatki z dzisiaj:");
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setText("Zapisz");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(jTextPaneDzisiejszeZakupy);
+
+        javax.swing.GroupLayout jPanelWPLayout = new javax.swing.GroupLayout(jPanelWP);
+        jPanelWP.setLayout(jPanelWPLayout);
+        jPanelWPLayout.setHorizontalGroup(
+            jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelWPLayout.createSequentialGroup()
+                .addGroup(jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelWPLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelWPLayout.createSequentialGroup()
+                        .addGroup(jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelWPLayout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelWPLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabelWpisz3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 4, Short.MAX_VALUE))
+                    .addComponent(jLabelWpisz2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelWPLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelWpisz, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldWpisz1)
+                            .addGroup(jPanelWPLayout.createSequentialGroup()
+                                .addComponent(jLabelWpisz1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jTextFieldWpisz3)
+                            .addComponent(jLabelWpisz4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldWpisz2)
+                            .addComponent(jLabelWpisz5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldWpisz4)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelWPLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jTextFieldWpisz, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+        );
+        jPanelWPLayout.setVerticalGroup(
+            jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelWPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelWPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelWPLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(jPanelWPLayout.createSequentialGroup()
+                        .addComponent(jLabelWpisz, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldWpisz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelWpisz3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldWpisz1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelWpisz1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelWpisz2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldWpisz2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelWpisz5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldWpisz3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelWpisz4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldWpisz4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
+        );
+
+        jTabbedPaneListaZakupow.addTab("Wprowadź zakupy", jPanelWP);
+
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
@@ -237,23 +242,15 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldWpisz3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldWpisz3ActionPerformed
+    private void jTextFieldWpisz2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldWpisz2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldWpisz3ActionPerformed
+    }//GEN-LAST:event_jTextFieldWpisz2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jTextPaneDzisiejszeZakupy.setText(jTextFieldWpisz.getText()+";"
-            +jTextFieldWpisz1.getText()+";"
-            +jComboBox.getSelectedItem()+";"
-            +jTextFieldWpisz3.getText()+";"
-            +jTextFieldWpisz2.getText()+";"
-            +jTextFieldWpisz4.getText()+"\n");
-        jTextFieldWpisz.setText("");
-        jTextFieldWpisz1.setText("");
-        jTextFieldWpisz3.setText("");
-        jTextFieldWpisz2.setText("");
-        jTextFieldWpisz4.setText("");
-        jComboBox.setSelectedItem("item1");
+        FileUtils stf = new FileUtils();
+        String text = jTextFieldWpisz.getText()+";"+jTextFieldWpisz1.getText()
+                +";"+jComboBox.getSelectedItem()+";"+jTextFieldWpisz2.getText();
+        stf.saveToFile(text);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -341,22 +338,22 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
     }
     
     private void addKeyListenerData(){
-      jTextFieldWpisz3.addKeyListener(new KeyListener(){
+      jTextFieldWpisz2.addKeyListener(new KeyListener(){
             @Override
             public void keyTyped(KeyEvent e) {
-                String temp = jTextFieldWpisz3.getText();
+                String temp = jTextFieldWpisz2.getText();
                 char ch = e.getKeyChar();
                 if((ch >= '0' && ch <= '9' || ch==KeyEvent.VK_BACK_SPACE) &&
                         (temp.length() < 10 || ch==KeyEvent.VK_BACK_SPACE)){
-                    jTextFieldWpisz3.setEditable(true);
+                    jTextFieldWpisz2.setEditable(true);
                     if((temp.length() == 4 || temp.length() == 7) && ch != KeyEvent.VK_BACK_SPACE){
-                        jTextFieldWpisz3.setText(temp+"-");
+                        jTextFieldWpisz2.setText(temp+"-");
                     }
                 }else{
-                    jTextFieldWpisz3.setEditable(false);
+                    jTextFieldWpisz2.setEditable(false);
                 }
             }
-
+            
 
         @Override
         public void keyPressed(KeyEvent e) {
@@ -369,6 +366,82 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
         }
     });   
     }
+    private void addKeyListenerWydatki(){
+      jTextFieldWpisz3.addKeyListener(new KeyListener(){
+            @Override
+            public void keyTyped(KeyEvent e) {
+                String temp = jTextFieldWpisz3.getText();
+                char ch = e.getKeyChar();   
+                if((ch >= '0' && ch <= '9' || ch==KeyEvent.VK_BACK_SPACE) &&
+                        (temp.length() < 5 || ch==KeyEvent.VK_BACK_SPACE)){
+                    jTextFieldWpisz3.setEditable(true);
+                    if((temp.length() == 3) && ch != KeyEvent.VK_BACK_SPACE){
+                        jTextFieldWpisz3.setText(temp+".");
+                    }
+                }else{
+                    jTextFieldWpisz3.setEditable(false);
+                }
+            }
+            
+        @Override
+        public void keyPressed(KeyEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+    });   
+    }
+    private void addToolTipElements(){
+        jTextFieldWpisz.setToolTipText("<html>"
+                +"<h3>Wprowadz tekst</h3>"
+                +"<p>Nie uzywaj polskich znakow</p>"
+                +"</html>");
+       jTextFieldWpisz1.setToolTipText("<html>"
+                +"<h3>Wprowadz wartosc podanego produktu</h3>"
+                +"<p>Nie uzywaj polskich znakow</p>"
+                +"</html>");
+       jTextFieldWpisz3.setToolTipText("<html>"
+                +"<h3>Wprowadz wydatki z dzisiaj</h3>"
+                +"<p>Nie uzywaj polskich znakow</p>"
+                +"</html>");
+       jTextFieldWpisz2.setToolTipText("<html>"
+                +"<h3>Wprowadz date</h3>"
+                +"<p>Nie uzywaj polskich znakow</p>"
+                +"</html>");
+       jTextFieldWpisz4.setToolTipText("<html>"
+                +"<h3>Wprowadz wydatki z tygodnia</h3>"
+                +"<p>Nie uzywaj polskich znakow</p>"
+                +"</html>");
+       jComboBox.setToolTipText("<html>"
+                +"<h3>Wybierz typ zakupów</h3>"
+                +"<p>Wybierz</p>"
+                +"</html>");
+       jButton1.setToolTipText("<html>"
+                +"<h3>Zapisz działanie</h3>"
+                +"<p>Zapis</p>"
+                +"</html>");
+       jTextPaneDzisiejszeZakupy.setToolTipText("<html>"
+                +"<h3>Twoje produkty</h3>"
+                +"<p>produkty</p>"
+                +"</html>");
+    }
+
+    private void filljCBProducts(){
+        //TODO read procucts from file!!!
+        jComboBox.removeAllItems();
+        try {
+            Scanner sc = new Scanner(new File("produkty.txt"));
+            while(sc.hasNext()){
+                String item = sc.nextLine();
+                jComboBox.addItem(item);
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.toString());
+        }
+    }   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox;

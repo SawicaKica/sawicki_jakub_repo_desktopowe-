@@ -1,0 +1,6 @@
+zywnosc warzywa
+zywnosc owoce
+zywnosc napoje
+zywnosc nabial
+zywnosc slodycze
+zywnosc pieczywo
