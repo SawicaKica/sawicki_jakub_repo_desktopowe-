@@ -29,7 +29,7 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
         addKeyListenerData();
         addKeyListenerWydatki();
         addToolTipElements();
-        filljCBProducts();
+        wczytaj();
     }
 
     /**
@@ -429,19 +429,21 @@ public class listazakupowJakubSawicki extends javax.swing.JFrame {
                 +"</html>");
     }
 
-    private void filljCBProducts(){
-        //TODO read procucts from file!!!
-        jComboBox.removeAllItems();
+    private void wczytaj(){
+        File f = new File("produkty.txt");
+        jComboBox.removeAllItems(); 
         try {
-            Scanner sc = new Scanner(new File("produkty.txt"));
+            Scanner sc = new Scanner(f);         
             while(sc.hasNext()){
                 String item = sc.nextLine();
+                System.out.print(item);
                 jComboBox.addItem(item);
             }
         } catch (FileNotFoundException ex) {
             System.out.println(ex.toString());
         }
-    }   
+    }
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox;

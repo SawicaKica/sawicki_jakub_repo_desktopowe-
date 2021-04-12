@@ -14,12 +14,12 @@ import java.util.logging.Logger;
  * @author sawic
  */
 public class FileUtils {
-    private String file_name = "lista_zakupow.txt";
+    private String file_name = "lista_zakupow.csv";
     
     public void saveToFile(String text){
         try {
             FileWriter fw = new FileWriter(new File(file_name),true);
-            fw.write(text);
+            fw.write(text+"\n");
             fw.close();
         } catch (IOException ex) {
             Logger.getLogger(FileUtils.class.getName()).log(Level.SEVERE, null, ex);
