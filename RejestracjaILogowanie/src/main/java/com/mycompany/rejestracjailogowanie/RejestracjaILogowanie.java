@@ -6,8 +6,10 @@
 package com.mycompany.rejestracjailogowanie;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -266,41 +268,54 @@ public class RejestracjaILogowanie extends javax.swing.JFrame {
     private void Rejestracja(){
         //Username
         String username = jTextFieldUsername.getText();
+        boolean usernm = false;
+        if(username.length() > 2 || username.length() < 20){                          
         
-        if(username.length() < 2 || username.length() > 20){
-            JOptionPane.showMessageDialog(null, "Niepoprawny username");
-        }
-                          
-        for(int i=0; i<username.length(); i++){
-            char ch = username.charAt(i);
-            if(!(ch >= 'A' && ch <= 'z')){
-                jTextFieldUsername.setText("Username nie może zawierać liczb!");
+            for(int i=0; i<username.length(); i++){
+                char ch = username.charAt(i);
+                if((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <='z')){
+                    usernm = true;
+                }else{                    
+                    jTextFieldUsername.setText("Username nie może zawierać liczb!");
+                    usernm = false;
+                }
             }
-        }   
+        }  
         //password
         String pass = jTextFieldPassword.getText();
         String conf = jTextFieldCPassword.getText();
-        
-        if(pass.length() < 4){
-          JOptionPane.showMessageDialog(null, "Hasło musi zawierać więcej niż 4 znaki!");  
-        }
-        for(int i=0; i<pass.length(); i++){
-            char ch = pass.charAt(i);
-            if(!(ch >= 'A' && ch <= 'z' || ch >= '0' && ch <= '9')){
-                jTextFieldPassword.setText("Hasło może zawierać tylko liczby i litery!");        ;
+        boolean password = false;
+        if(pass.length() > 4){ 
+            for(int i=0; i<pass.length(); i++){
+                char ch = pass.charAt(i);
+                if(!(ch >= 'A' && ch <= 'z' || ch >= '0' && ch <= '9')){
+                    jTextFieldPassword.setText("Hasło może zawierać tylko liczby i litery!");
+                    password = false;
+                }
             }
-        }
-        if(!(pass.equals(conf))){
-            JOptionPane.showMessageDialog(null, "Hasła nie są identyczne!");
+            if(!(pass.equals(conf))){
+                JOptionPane.showMessageDialog(null, "Hasła nie są identyczne!");
+                password = false;
+            }
+        }else{
+            password = true;
         }
         //Email
         String email = jTextFieldEmail.getText();
-        //Zapis
-         
+        boolean mail = true;     
+        
+        //Zapis 
         FileUtils stf = new FileUtils();
         String text = username+";"+email+";"+pass;
-        stf.saveToFile(text);
+        if(usernm == true){
+            if(password = true){
+                if(mail = true){
+                    stf.saveToFile(text);
+                }
+            }
+        }
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLogin;
     private javax.swing.JButton jButtonRegistration;
